@@ -2,6 +2,7 @@
 using Android.Widget;
 using Android.OS;
 using System;
+using Android.Content;          // for Intent
 
 namespace IoT_Android
 {
@@ -28,6 +29,15 @@ namespace IoT_Android
             _helloButton.Click += (object sender, EventArgs e) =>
             {
                 _showName.Text = _nameInput.Text.ToString();
+
+                // create new intent instance for testActivity
+                var intent = new Intent(this, typeof(testActivity));
+
+                // load the intent with a parameter containing the string value in showName
+                intent.PutExtra("text_entered", _showName.Text);
+
+                // start the activity and pass the parameter to testActivity
+                StartActivity(intent);
             };
         }
     }
