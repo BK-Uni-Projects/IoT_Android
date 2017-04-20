@@ -3,5 +3,6 @@
   <PropertyGroup>
     <SelectedDevice>Samsung SM-N9005</SelectedDevice>
     <DefaultDevice>Android_ARMv7a</DefaultDevice>
+    <AndroidDesignerPreferredDevice>Nexus 4</AndroidDesignerPreferredDevice>
   </PropertyGroup>
 </Project>
