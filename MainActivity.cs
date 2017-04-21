@@ -4,6 +4,9 @@ using Android.OS;
 using System;
 using Android.Content;          // for Intent
 
+using Android.Provider;
+using Android.Graphics;
+
 namespace IoT_Android
 {
     [Activity(Label = "IoT_Android", MainLauncher = true, Icon = "@drawable/icon")]
@@ -15,6 +18,12 @@ namespace IoT_Android
         private TextView _showName;
         private Button _showBrowser;
         private Button _showMaps;
+        
+        // For camera intent
+        Button _showCamera;
+        ImageView _imageView;
+        Java.IO.File _file;
+        Java.IO.File _dir;
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -29,6 +38,8 @@ namespace IoT_Android
             _showName =     FindViewById<TextView>(Resource.Id.textView1);
             _showBrowser =  FindViewById<Button>(Resource.Id.button2);
             _showMaps =     FindViewById<Button>(Resource.Id.button3);
+            _showCamera =   FindViewById<Button>(Resource.Id.button4);
+            _imageView = FindViewById<ImageView>(Resource.Id.imageView1);
 
             // Functions for UI controls
             _helloButton.Click += (object sender, EventArgs e) =>
@@ -66,6 +77,51 @@ namespace IoT_Android
                 // launch Google maps or show list of map apps to choose from
                 StartActivity(mapIntent);
             };
+
+            _showCamera.Click += (object sender, EventArgs e) =>
+            {
+                // Create public photos directory on external storage
+                _dir = new Java.IO.File(Android.OS.Environment.GetExternalStoragePublicDirectory(Android.OS.Environment.DirectoryPictures), "AndroidCameraVSDemo");
+                if (!_dir.Exists())
+                {
+                    _dir.Mkdirs();
+                }
+
+                // Setup the camera intent
+                Intent intent = new Intent(MediaStore.ActionImageCapture);
+                // Setup the file name for the photo
+                _file = new Java.IO.File(_dir, String.Format("myPhoto_{0}.jpg", Guid.NewGuid()));
+                // Pass the filename of the photo to the camera intent
+                intent.PutExtra(MediaStore.ExtraOutput, Android.Net.Uri.FromFile(_file));
+                // Start the camera!
+                StartActivityForResult(intent, 0);
+
+            };
+        }
+        // Event fires after photo is taken
+        protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
+        {
+            base.OnActivityResult(requestCode, resultCode, data);
+
+            if (resultCode == Result.Canceled) return;
+
+            if (_file != null)
+            {
+                // Create a bitmap from the photo data using its file path
+                Bitmap bitmap = BitmapFactory.DecodeFile(_file.Path);
+
+                // scale the photo to 20% of its size for displaying
+                int scaleWidth = (int)(bitmap.Width * 0.2);
+                int scaleHeight = (int)(bitmap.Height * 0.2);
+
+                // rescale the photo and bind it to the imageview widget
+                var bitmapScalled = Bitmap.CreateScaledBitmap(bitmap, scaleWidth, scaleHeight, true);
+                bitmap.Recycle();
+                _imageView.SetImageBitmap(bitmapScalled);
+
+                // garbage collection to remove any large images from memory
+                GC.Collect();
+            }
         }
     }
 }
