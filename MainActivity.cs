@@ -28,6 +28,8 @@ namespace IoT_Android
         Button _locationBasic;
         Button _locationAdvanced;
 
+        private Button _showStorage;
+
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
@@ -45,6 +47,7 @@ namespace IoT_Android
             _imageView = FindViewById<ImageView>(Resource.Id.imageView1);
             _locationBasic = FindViewById<Button>(Resource.Id.button5);
             _locationAdvanced = FindViewById<Button>(Resource.Id.button6);
+            _showStorage = FindViewById<Button>(Resource.Id.button7);
 
             // Functions for UI controls
             _helloButton.Click += (object sender, EventArgs e) =>
@@ -117,6 +120,11 @@ namespace IoT_Android
                 StartActivity(intent);
             };
 
+            _showStorage.Click += (object sender, EventArgs e) =>
+            {
+                var intent = new Intent(this, typeof(storage));
+                StartActivity(intent);
+            };
 
         }
         // Event fires after photo is taken

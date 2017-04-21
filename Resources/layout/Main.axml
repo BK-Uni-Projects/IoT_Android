@@ -49,4 +49,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/button6" />
+    <Button
+        android:text="Storage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/button7" />
 </LinearLayout>

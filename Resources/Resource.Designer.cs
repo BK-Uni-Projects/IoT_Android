@@ -78,14 +78,23 @@ namespace IoT_Android
 			// aapt resource value: 0x7f050008
 			public const int button6 = 2131034120;
 			
+			// aapt resource value: 0x7f050009
+			public const int button7 = 2131034121;
+			
 			// aapt resource value: 0x7f050001
 			public const int editText1 = 2131034113;
+			
+			// aapt resource value: 0x7f05000a
+			public const int editText2 = 2131034122;
 			
 			// aapt resource value: 0x7f050006
 			public const int imageView1 = 2131034118;
 			
 			// aapt resource value: 0x7f050002
 			public const int textView1 = 2131034114;
+			
+			// aapt resource value: 0x7f05000b
+			public const int textView2 = 2131034123;
 			
 			static Id()
 			{
@@ -107,7 +116,10 @@ namespace IoT_Android
 			public const int Main = 2130903041;
 			
 			// aapt resource value: 0x7f030002
-			public const int test = 2130903042;
+			public const int storageui = 2130903042;
+			
+			// aapt resource value: 0x7f030003
+			public const int test = 2130903043;
 			
 			static Layout()
 			{
