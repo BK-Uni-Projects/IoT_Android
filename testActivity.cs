@@ -18,7 +18,9 @@ namespace IoT_Android
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-    
+            
+            // Set our view from the "test.axml" layout resource
+            SetContentView(Resource.Layout.test);
             // get parameter value as passed from MainActivity.cs
             var nameEntered = Intent.Extras.GetString("text_entered");
             // create instance of the textView in test.axml
@@ -27,12 +29,7 @@ namespace IoT_Android
             showName = FindViewById<TextView>(Resource.Id.textView1);
             // bind the value of name_entered to the textView
             showName.Text = nameEntered;
-            // Set our view from the "test.axml" layout resource
-            SetContentView(Resource.Layout.test);
 
-
-
-            // Create your application here
         }
     }
 }
