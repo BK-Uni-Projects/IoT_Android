@@ -25,6 +25,9 @@ namespace IoT_Android
         Java.IO.File _file;
         Java.IO.File _dir;
 
+        Button _locationBasic;
+        Button _locationAdvanced;
+
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
@@ -40,6 +43,8 @@ namespace IoT_Android
             _showMaps =     FindViewById<Button>(Resource.Id.button3);
             _showCamera =   FindViewById<Button>(Resource.Id.button4);
             _imageView = FindViewById<ImageView>(Resource.Id.imageView1);
+            _locationBasic = FindViewById<Button>(Resource.Id.button5);
+            _locationAdvanced = FindViewById<Button>(Resource.Id.button6);
 
             // Functions for UI controls
             _helloButton.Click += (object sender, EventArgs e) =>
@@ -97,6 +102,22 @@ namespace IoT_Android
                 StartActivityForResult(intent, 0);
 
             };
+
+            // launch event to get basic location once
+            _locationBasic.Click += (object sender, EventArgs e) =>
+            {
+                var intent = new Intent(this, typeof(locationBasic));
+                StartActivity(intent);
+            };
+
+            // launch event to get advanced location with updates
+            _locationAdvanced.Click += (object sender, EventArgs e) =>
+            {
+                var intent = new Intent(this, typeof(locationAdvanced));
+                StartActivity(intent);
+            };
+
+
         }
         // Event fires after photo is taken
         protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)

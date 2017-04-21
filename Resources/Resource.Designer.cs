@@ -72,6 +72,12 @@ namespace IoT_Android
 			// aapt resource value: 0x7f050005
 			public const int button4 = 2131034117;
 			
+			// aapt resource value: 0x7f050007
+			public const int button5 = 2131034119;
+			
+			// aapt resource value: 0x7f050008
+			public const int button6 = 2131034120;
+			
 			// aapt resource value: 0x7f050001
 			public const int editText1 = 2131034113;
 			
@@ -95,10 +101,13 @@ namespace IoT_Android
 		{
 			
 			// aapt resource value: 0x7f030000
-			public const int Main = 2130903040;
+			public const int location = 2130903040;
 			
 			// aapt resource value: 0x7f030001
-			public const int test = 2130903041;
+			public const int Main = 2130903041;
+			
+			// aapt resource value: 0x7f030002
+			public const int test = 2130903042;
 			
 			static Layout()
 			{
