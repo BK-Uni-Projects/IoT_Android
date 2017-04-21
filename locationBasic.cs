@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
 
 using Android.App;
 using Android.Content;
@@ -64,10 +65,26 @@ namespace IoT_Android
             TextView showLocation = new TextView(this);
 
             // bind the value of name_entered to the textView
-            showLocation.Text = ("Location:\n" + lat + "\n" + longi);
+            showLocation.Text = ("Loc:\t" + lat + "\t" + longi);
 
             // Set the UI view to the textView widger showLocation
             SetContentView(showLocation);
+
+            //This gets the full path for the "files" directory of your app, where you have permission to read/write.
+            var documentsPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
+
+            //This creates the full file path to your "location.txt" file.
+            var filePath = System.IO.Path.Combine(documentsPath, "location.txt");
+
+            // Create a streamwriter that will create the file and append data to it
+            using (StreamWriter writer = new StreamWriter(filePath, true))
+            {
+                // Write location cooordinates to a line in text file
+                writer.WriteLine(lat + "," + longi + "\n");
+                ;
+            }
+
+
         }
     }
 }
