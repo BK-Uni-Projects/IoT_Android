@@ -14,6 +14,7 @@ namespace IoT_Android
         private EditText _nameInput;
         private TextView _showName;
         private Button _showBrowser;
+        private Button _showMaps;
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -23,10 +24,11 @@ namespace IoT_Android
             SetContentView(Resource.Layout.Main);
 
             // Assign UI controls
-            _helloButton = FindViewById<Button>(Resource.Id.button1);
-            _nameInput = FindViewById<EditText>(Resource.Id.editText1);
-            _showName = FindViewById<TextView>(Resource.Id.textView1);
-            _showBrowser = FindViewById<Button>(Resource.Id.button2);
+            _helloButton =  FindViewById<Button>(Resource.Id.button1);
+            _nameInput =    FindViewById<EditText>(Resource.Id.editText1);
+            _showName =     FindViewById<TextView>(Resource.Id.textView1);
+            _showBrowser =  FindViewById<Button>(Resource.Id.button2);
+            _showMaps =     FindViewById<Button>(Resource.Id.button3);
 
             // Functions for UI controls
             _helloButton.Click += (object sender, EventArgs e) =>
@@ -53,6 +55,16 @@ namespace IoT_Android
 
                 // launch browser intent
                 StartActivity(intent);
+            };
+
+            // launch event for Google maps
+            _showMaps.Click += delegate {
+                // create Uri with GPS coordinates of Lincoln
+                var geoUri = Android.Net.Uri.Parse("geo:53.22683 -0.53792");
+                // pass coordinates to intent app that is capable of display geocoordinates
+                var mapIntent = new Intent(Intent.ActionView, geoUri);
+                // launch Google maps or show list of map apps to choose from
+                StartActivity(mapIntent);
             };
         }
     }
