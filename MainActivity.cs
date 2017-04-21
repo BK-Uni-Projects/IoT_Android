@@ -13,6 +13,8 @@ namespace IoT_Android
         private Button _helloButton;
         private EditText _nameInput;
         private TextView _showName;
+        private Button _showBrowser;
+
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
@@ -24,6 +26,7 @@ namespace IoT_Android
             _helloButton = FindViewById<Button>(Resource.Id.button1);
             _nameInput = FindViewById<EditText>(Resource.Id.editText1);
             _showName = FindViewById<TextView>(Resource.Id.textView1);
+            _showBrowser = FindViewById<Button>(Resource.Id.button2);
 
             // Functions for UI controls
             _helloButton.Click += (object sender, EventArgs e) =>
@@ -37,6 +40,18 @@ namespace IoT_Android
                 intent.PutExtra("text_entered", _showName.Text);
 
                 // start the activity and pass the parameter to testActivity
+                StartActivity(intent);
+            };
+
+            // button event to launch browser
+            _showBrowser.Click += delegate {
+                // parse web url to a Uri
+                var uri = Android.Net.Uri.Parse("http://www.android.com");
+
+                // setup intent to launch browser with the uri web address
+                var intent = new Intent(Intent.ActionView, uri);
+
+                // launch browser intent
                 StartActivity(intent);
             };
         }
