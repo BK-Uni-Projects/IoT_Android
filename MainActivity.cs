@@ -18,6 +18,8 @@ namespace IoT_Android
         private TextView _showName;
         private Button _showBrowser;
         private Button _showMaps;
+        private Button _showWeather;
+        private Button _tweets;
         
         // For camera intent
         Button _showCamera;
@@ -38,16 +40,18 @@ namespace IoT_Android
             SetContentView(Resource.Layout.Main);
 
             // Assign UI controls
-            _helloButton =  FindViewById<Button>(Resource.Id.button1);
-            _nameInput =    FindViewById<EditText>(Resource.Id.editText1);
-            _showName =     FindViewById<TextView>(Resource.Id.textView1);
-            _showBrowser =  FindViewById<Button>(Resource.Id.button2);
-            _showMaps =     FindViewById<Button>(Resource.Id.button3);
-            _showCamera =   FindViewById<Button>(Resource.Id.button4);
-            _imageView = FindViewById<ImageView>(Resource.Id.imageView1);
-            _locationBasic = FindViewById<Button>(Resource.Id.button5);
-            _locationAdvanced = FindViewById<Button>(Resource.Id.button6);
-            _showStorage = FindViewById<Button>(Resource.Id.button7);
+            _helloButton =          FindViewById<Button>(Resource.Id.button1);
+            _nameInput =            FindViewById<EditText>(Resource.Id.editText1);
+            _showName =             FindViewById<TextView>(Resource.Id.textView1);
+            _showBrowser =          FindViewById<Button>(Resource.Id.button2);
+            _showMaps =             FindViewById<Button>(Resource.Id.button3);
+            _showCamera =           FindViewById<Button>(Resource.Id.button4);
+            _imageView =            FindViewById<ImageView>(Resource.Id.imageView1);
+            _locationBasic =        FindViewById<Button>(Resource.Id.button5);
+            _locationAdvanced =     FindViewById<Button>(Resource.Id.button6);
+            _showStorage =          FindViewById<Button>(Resource.Id.button7);
+            _showWeather =          FindViewById<Button>(Resource.Id.button8);
+            _tweets =               FindViewById<Button>(Resource.Id.button9);
 
             // Functions for UI controls
             _helloButton.Click += (object sender, EventArgs e) =>
@@ -123,6 +127,18 @@ namespace IoT_Android
             _showStorage.Click += (object sender, EventArgs e) =>
             {
                 var intent = new Intent(this, typeof(storage));
+                StartActivity(intent);
+            };
+
+            _showWeather.Click += (object sender, EventArgs e) =>
+            {
+                var intent = new Intent(this, typeof(weather));
+                StartActivity(intent);
+            };
+
+            _tweets.Click += (object sender, EventArgs e) =>
+            {
+                var intent = new Intent(this, typeof(tweets));
                 StartActivity(intent);
             };
 
