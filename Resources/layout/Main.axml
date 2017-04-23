@@ -4,16 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <Button
-        android:text="Location Basic"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/button5" />
-    <Button
-        android:text="Location Advanced"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/button6" />
-    <Button
         android:text="Storage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
