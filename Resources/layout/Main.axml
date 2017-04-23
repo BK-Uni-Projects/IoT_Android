@@ -4,42 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <Button
-        android:text="Button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/button1" />
-    <EditText
-        android:inputType="textPersonName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/editText1" />
-    <TextView
-        android:text="Medium Text"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView1" />
-    <Button
-        android:text="Browser"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/button2" />
-    <Button
-        android:text="Maps"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/button3" />
-    <Button
-        android:text="Camera"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/button4" />
-    <ImageView
-        android:src="@android:drawable/ic_menu_gallery"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageView1" />
-    <Button
         android:text="Location Basic"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -55,13 +19,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/button7" />
     <Button
-        android:text="Weather"
+        android:text="Sensors"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/button8" />
-    <Button
-        android:text="Tweets"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/button9" />
+        android:id="@+id/button10" />
 </LinearLayout>
