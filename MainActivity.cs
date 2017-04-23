@@ -19,8 +19,6 @@ namespace IoT_Android
     public class MainActivity : Activity
     {
         // declaration of UI controls
-        private Button _locationBasic;
-        private Button _locationAdvanced;
         private Button _showStorage;
         private Button _sensors;
 
@@ -35,26 +33,12 @@ namespace IoT_Android
             SetContentView(Resource.Layout.Main);
 
             // Assign UI controls
-            _locationBasic =        FindViewById<Button>(Resource.Id.button5);
-            _locationAdvanced =     FindViewById<Button>(Resource.Id.button6);
             _showStorage =          FindViewById<Button>(Resource.Id.button7);
             _sensors =              FindViewById<Button>(Resource.Id.button10);
 
             /** 
              * On Click functions for all buttons on the main activity screen
              */
-
-            _locationBasic.Click += (object sender, EventArgs e) =>
-            {
-                var intent = new Intent(this, typeof(locationBasic));
-                StartActivity(intent);
-            };
-
-            _locationAdvanced.Click += (object sender, EventArgs e) =>
-            {
-                var intent = new Intent(this, typeof(locationAdvanced));
-                StartActivity(intent);
-            };
 
             _showStorage.Click += (object sender, EventArgs e) =>
             {
