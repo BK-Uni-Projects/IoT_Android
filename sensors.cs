@@ -16,45 +16,50 @@ using Android.Views;
 using Android.Widget;
 using Newtonsoft.Json;
 
+
 namespace IoT_Android
 {
     [Activity(Label = "sensors")]
     public class sensors : Activity
     {
+        private Button _graphs;
+
         public class jsonSensor
         {
             public string sensor_type { get; set; }
             public string value { get; set; }
         }
 
-        // Example from Ashley on facebook, use to compare with own methods previously implemented
-        public class RootObject
-        {
-            [JsonProperty("sensor_type")]
-            public string sensor_type { get; set; }
-            [JsonProperty("value")]
-            public string value { get; set; }
-        }
-
+     
         protected override async void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
             SetContentView(Resource.Layout.sensors);
 
-            string sensorURL = "http://bksiotworkshop.azurewebsites.net/index.php/sensors/getsensordata?sensorid=2";
+            /*Graphs Activities*/
+            _graphs = FindViewById<Button>(Resource.Id.button1);
+            _graphs.Click += (object sender, EventArgs e) =>
+            {
+                var intent = new Intent(this, typeof(graphs));
+                StartActivity(intent);
+            };
+
+
+            string sensorURL = "http://bksiotworkshop.azurewebsites.net/index.php/sensors/getsensordata?sensorid=5";
+            
 
             JsonValue json = await GetSensorData(sensorURL);
 
             TextView jsondump1 = FindViewById<TextView>(Resource.Id.textView1);
             TextView jsondump2 = FindViewById<TextView>(Resource.Id.textView2);
 
-            jsondump1.Text = json.ToString();           // Output Pure json as returned by GET
+            jsondump1.Text = "text"; //json.ToString();           // Output Pure json as returned by GET
             jsondump2.Text = ParseAndDisplay(json);     // Output formatted json 
 
         }
 
-        
+
         private async Task<JsonValue> GetSensorData(string url)
         {
             // Create an HTTP web request using the URL:
